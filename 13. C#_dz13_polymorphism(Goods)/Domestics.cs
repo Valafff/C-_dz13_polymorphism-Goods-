@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace _13.C__dz13_polymorphism_Goods_
 {
-	internal abstract class Domestics : Goods
+	internal class Domestics : Goods
 	{
 
 		public DateTime ManufactureDate { get; set; }
 		public DateTime GarrantyEndDate { get; set; }
-
-		public Domestics(string arg_name, double arg_price, int arg_count, DateTime manufactureDate, DateTime arg_GarrantyEndDate) : base(arg_name, arg_price, arg_count)
+		public string Type { get; set; }
+		public Domestics(string arg_name, double arg_price, int arg_count, string arg_type, DateTime manufactureDate, DateTime arg_GarrantyEndDate) : base(arg_name, arg_price, arg_count)
 		{
+			Type = arg_type;
 			ManufactureDate = manufactureDate;
 			GarrantyEndDate = arg_GarrantyEndDate;
 		}
@@ -54,7 +55,7 @@ namespace _13.C__dz13_polymorphism_Goods_
 		}
 		public override void Print()
 		{
-			Console.WriteLine($"Название товара {Name} Цена товара {Price} Количество на складе {TotalCount} Дата изготовления {ManufactureDate} Окончание гарантии {GarrantyEndDate}");
+			Console.WriteLine($"Артикул: {id} Название товара: {Name} Тип товара: {Type} Цена товара: {Price} руб. Кол-во на складе: {TotalCount} шт. \nДата изг.: {ManufactureDate.ToShortDateString()}  Срок годности до: {GarrantyEndDate.ToShortDateString()}");
 		}
 
 	}

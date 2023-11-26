@@ -9,29 +9,32 @@ namespace _13.C__dz13_polymorphism_Goods_
 {
 	internal abstract class Goods
 	{
-		static public uint ID;
+		static uint ID;
+		public uint id { get; }
 		public string Name { get; set; }
-		public double Price { get; set; }
 
+		//public double Price { get; set; }
+		double price;
 
-		//public double Price
-		//{
-		//	get { return Price; }
-		//	set
-		//	{
-		//		if (value < 0)
-		//		{
-		//			value = 0;
-		//		}
-		//		price = value;
-		//	}
-		//}
+		public double Price
+		{
+			get { return price; }
+			set
+			{
+				if (value < 0)
+				{
+					value = 0;
+				}
+				price = value;
+			}
+		}
 
 		//public bool Is_sold { get; set; }
 		public int TotalCount { get; set; }
 
 		public Goods(string arg_name, double arg_price, int count = 1)
 		{
+			id = ID;
 			ID++;
 			Name = arg_name;
 			Price = arg_price;
@@ -49,13 +52,6 @@ namespace _13.C__dz13_polymorphism_Goods_
 		public abstract void AddGoods(int arg_status);
 		public abstract void Print();
 		public abstract void SellGoods(int arg_count);
-		//public abstract void DeleteGoods(int arg_count);
-
-
-		//~Goods()
-		//{
-		//	ID--;
-		//}
 	}
 
 

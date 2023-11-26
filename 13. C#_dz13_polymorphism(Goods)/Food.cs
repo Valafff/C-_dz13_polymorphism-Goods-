@@ -6,16 +6,30 @@ using System.Threading.Tasks;
 
 namespace _13.C__dz13_polymorphism_Goods_
 {
-	internal abstract class Food : Goods
+	internal  class Food : Goods
 	{
 		public DateTime ManufactureDate { get; set; }
 		public DateTime ExperationDate { get; set; }
-
-		//bool VeganFood { get; set; }
-
-
-		public Food(string arg_name, double arg_price, int arg_count, DateTime manufactureDate, DateTime experationDate) : base(arg_name, arg_price, arg_count)
+		int calorie;
+		public int Calorie
 		{
+			get { return calorie; }
+			set
+			{
+				if(value< 0)
+				{
+					calorie = 0;
+				}
+				else 
+				{
+					calorie = value;
+				}
+			}
+		}
+
+		public Food(string arg_name, double arg_price, int arg_count, int arg_calorie, DateTime manufactureDate, DateTime experationDate) : base(arg_name, arg_price, arg_count)
+		{
+			calorie =arg_calorie;
 			ManufactureDate = manufactureDate;
 			ExperationDate = experationDate;
 		}
@@ -57,7 +71,7 @@ namespace _13.C__dz13_polymorphism_Goods_
 
 		public override void Print()
 		{
-            Console.WriteLine($"Название товара {Name} Цена товара {Price} Количество на складе {TotalCount} Дата изготовления {ManufactureDate} Срок годности {ExperationDate}");
+            Console.WriteLine($"Артикул: {id} Название товара: {Name} Цена товара: {Price} руб. Кол-во на складе: {TotalCount} шт.\nПищевая ценность: {calorie} ккал. Дата изготовления: {ManufactureDate.ToShortDateString()} Срок годности до: {ExperationDate.ToShortDateString()}");
         }
 
 		//public virtual void DeleteGoods(int arg_count);
